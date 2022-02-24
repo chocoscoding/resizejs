@@ -1,24 +1,18 @@
 'use strict';
 
 
-function add(a, b) {
+module.exports.add = (a, b) =>{
     return a + b;
 }
 
-function subtract(a, b) {
+module.exports.subtract = (a, b) =>{
     return a - b;
 }
 
-function divide(a, b) {
+module.exports.divide = (a, b) =>{
     return a / b;
 }
 
-function multiply(a, b) {
+module.exports.multiply = (a, b) =>{
     return a * b;
 }
-    module.exports = {
-        add,
-        subtract,
-        divide,
-        multiply
-    }
