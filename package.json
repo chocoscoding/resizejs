@@ -1,6 +1,6 @@
 {
   "name": "resyze",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "resizejs library",
   "main": "index.js",
   "scripts": {
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/chocoscoding/resizejs/issues"
   },
-  "homepage": "https://github.com/chocoscoding/resizejs#readme"
+  "homepage": "https://github.com/chocoscoding/resizejs#readme",
+  "dependencies": {
+    "resyze": "^1.0.0"
+  }
 }

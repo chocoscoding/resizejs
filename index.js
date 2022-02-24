@@ -1,16 +1,24 @@
 'use strict';
-exports.add = function add(a, b) {
+
+
+function add(a, b) {
     return a + b;
 }
- 
-exports.subtract = function subtract(a, b) {
+
+function subtract(a, b) {
     return a - b;
 }
- 
-exports.divide = function divide(a, b) {
+
+function divide(a, b) {
     return a / b;
 }
- 
-exports.multiply = function multiply(a, b) {
+
+function multiply(a, b) {
     return a * b;
 }
+    export default {
+        add,
+        subtract,
+        divide,
+        multiply
+    }
