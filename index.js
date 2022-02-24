@@ -1,12 +1,4 @@
 'use strict';
- 
-module.exports = {
-    add,
-    subtract,
-    divide,
-    multiply
-}
- 
 exports.add = function add(a, b) {
     return a + b;
 }
