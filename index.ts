@@ -1,22 +1,21 @@
-function resize(
-    domarr: [
-        {
-            parent: any,
-            element: HTMLElement,
-            mediaQ: [{
-                    Q: String,
-                    size: String | number
-            }],
+// domarr: [
+//     {
+//         parent: any,
+//         element: HTMLElement,
+//         mediaQ: [{
+//                 Q: String,
+//                 size: String | number
+//         }],
 
 
-        }
-    ]
-){ 
+//     }
+// ]
+const resize = (
+    domarr: any
+) =>{ 
 
-    return 'done'
+    return 'done w'
 
 }
 
-export default{
-    resize
-};
+export default{resize};

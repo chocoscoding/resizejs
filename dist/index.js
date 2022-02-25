@@ -1,8 +1,16 @@
 "use strict";
+// domarr: [
+//     {
+//         parent: any,
+//         element: HTMLElement,
+//         mediaQ: [{
+//                 Q: String,
+//                 size: String | number
+//         }],
 Object.defineProperty(exports, "__esModule", { value: true });
-function resize(domarr) {
-    return 'done';
-}
-exports.default = {
-    resize
+//     }
+// ]
+const resize = (domarr) => {
+    return 'done w';
 };
+exports.default = { resize };
