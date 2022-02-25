@@ -1,4 +1,3 @@
-interface mainS{}
 function resize(
     domarr: [
         {
@@ -18,6 +17,6 @@ function resize(
 
 }
 
-export {
+export default{
     resize
-}
+};

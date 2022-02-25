@@ -11,4 +11,4 @@
       "forceConsistentCasingInFileNames": true
     },
     "exclude": ["dist", "node_modules"]
-  }
+  } 
