@@ -11,7 +11,7 @@ function resize(
 
         }
     ]
-){
+){ 
 
     return 'done'
 
