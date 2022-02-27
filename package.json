@@ -1,6 +1,6 @@
 {
-  "name": "resyze-2",
-  "version": "0.0.1",
+  "name": "resyze",
+  "version": "1.0.0",
   "description": "resizejs library",
   "main": "index.js",
   "type": "module",
