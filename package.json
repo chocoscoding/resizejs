@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/chocoscoding/resizejs.git"
   },
-  "keywords": [],
+  "keywords": ["resyze", "resizejs", "css", "mediaquery", "responsive", "react", "styling", "frontend"],
   "author": "chocoscoding <chocoscoding@gmail.com>",
   "license": "MIT",
   "bugs": {
