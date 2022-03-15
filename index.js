@@ -1,6 +1,7 @@
-const main_s = 16;
-const main_a = 240 * 320;
-const r_body = document.body;
+const main_s = 16,
+    main_a = 240 * 320,
+    sb_min = 100,
+    r_body = document.body;
 
 
 function getnumber(data) {
@@ -10,7 +11,7 @@ function getnumber(data) {
     }
     else if (typeof r_ext === 'undefined') {
         return 0
-        
+
     }
     else {
         throw Error('r_ext must be a number')
@@ -20,52 +21,91 @@ function getnumber(data) {
 
 function resyze(domarr) {
     domarr.forEach((ele) => {
-        const { r_ele, r_type, r_ext } = ele;
-        requirements({ r_ele, r_type, r_ext })
+        const { r_ele, r_type, r_ext, TE, SB } = ele;
+        requirements({ r_ele, r_type, r_ext, TE, SB })
     });
 };
 
 
 function requirements(data) {
-    const { r_ele, r_type, r_ext } = data;
+    const { r_ele, r_type, r_ext, TE, SB } = data;
     if (r_ele === undefined) {
         throw Error('r_body or r_ele not found')
 
     }
     else if (r_ele) {
 
-        switch (r_type) {
-            case 'ignore':
-                ignore({ r_ele, r_ext })
-                break;
-            case 'normal':
-                normal({ r_ele, r_ext })
-                break;
-            case 'text':
-                text({ r_ele, r_ext })
-                break;
-            case 'tiny':
-                tiny({ r_ele, r_ext })
-                break;
-            case 'h1':
-                h1({ r_ele, r_ext })
-                break;
-            case 'h2':
-                h2({ r_ele, r_ext })
-                break;
-            case 'h3':
-                h3({ r_ele, r_ext })
-                break;
-            case 'h4':
-                h4({ r_ele, r_ext })
-                break;
-            case 'h5':
-                h5({ r_ele, r_ext })
-                break;
-            default:
-                errorfunc({ type: 'r_type' })
-                break;
+        if (SB) {
+
+            switch (r_type) {
+                case 'ignore':
+                    ignore({ r_ele, SB })
+                    break;
+                case 'normal':
+                    normal({ r_ele, SB })
+                    break;
+                case 'text':
+                    text({ r_ele, SB })
+                    break;
+                case 'tiny':
+                    tiny({ r_ele, SB })
+                    break;
+                case 'h1':
+                    h1({ r_ele, SB })
+                    break;
+                case 'h2':
+                    h2({ r_ele, SB })
+                    break;
+                case 'h3':
+                    h3({ r_ele, SB })
+                    break;
+                case 'h4':
+                    h4({ r_ele, SB })
+                    break;
+                case 'h5':
+                    h5({ r_ele, SB })
+                    break;
+                default:
+                    errorfunc({ type: 'r_type' })
+                    break;
+            }
         }
+        else {
+            switch (r_type) {
+                case 'ignore':
+                    ignore({ r_ele, r_ext })
+                    break;
+                case 'normal':
+                    normal({ r_ele, r_ext })
+                    break;
+                case 'text':
+                    text({ r_ele, r_ext })
+                    break;
+                case 'tiny':
+                    tiny({ r_ele, r_ext })
+                    break;
+                case 'h1':
+                    h1({ r_ele, r_ext })
+                    break;
+                case 'h2':
+                    h2({ r_ele, r_ext })
+                    break;
+                case 'h3':
+                    h3({ r_ele, r_ext })
+                    break;
+                case 'h4':
+                    h4({ r_ele, r_ext })
+                    break;
+                case 'h5':
+                    h5({ r_ele, r_ext })
+                    break;
+                default:
+                    errorfunc({ type: 'r_type' })
+                    break;
+            }
+
+        }
+
     }
     else {
         throw Error('r_body or r_ele not found')
@@ -90,49 +130,93 @@ function mainfont(data) {
 }
 
 function ignore(data) {
-    const { r_ele, r_ext } = data;
-    r_ele.style.fontSize = `${mainfont({ r_body }) + getnumber({ r_ext })}px`;
+    const { r_ele, r_ext, SB } = data;
+    if (SB) {
+
+    }
+    else {
+        r_ele.style.fontSize = `${mainfont({ r_body }) + getnumber({ r_ext })}px`;
+    }
 }
 function normal(data) {
-    const { r_ele, r_ext } = data;
+    const { r_ele, r_ext, SB } = data;
+    if (SB) {
 
-    const a1 = mainfont({ r_body }) - (mainfont({ r_body }) * 0.25)
-    r_ele.style.fontSize = `${a1 + getnumber({ r_ext })}px`;
+    }
+    else {
+        const a1 = mainfont({ r_body }) - (mainfont({ r_body }) * 0.25)
+        r_ele.style.fontSize = `${a1 + getnumber({ r_ext })}px`;
+    }
 }
 function text(data) {
-    const { r_ele, r_ext } = data;
-    const a1 = mainfont({ r_body }) - (mainfont({ r_body }) * 0.13)
-    r_ele.style.fontSize = `${a1 + getnumber({ r_ext })}px`;
+    const { r_ele, r_ext, SB } = data;
+    if (SB) {
+
+    }
+    else {
+        const a1 = mainfont({ r_body }) - (mainfont({ r_body }) * 0.13)
+        r_ele.style.fontSize = `${a1 + getnumber({ r_ext })}px`;
+    }
 }
 function tiny(data) {
-    const { r_ele, r_ext } = data;
-    const a1 = mainfont({ r_body }) - (mainfont({ r_body }) * 0.42)
-    r_ele.style.fontSize = `${a1 + getnumber({ r_ext })}px`;
+    const { r_ele, r_ext, SB } = data;
+    if (SB) {
+
+    }
+    else {
+        const a1 = mainfont({ r_body }) - (mainfont({ r_body }) * 0.42)
+        r_ele.style.fontSize = `${a1 + getnumber({ r_ext })}px`;
+    }
 }
 function h1(data) {
-    const { r_ele, r_ext } = data;
-    const a1 = mainfont({ r_body }) + (mainfont({ r_body }) * 0.52)
-    r_ele.style.fontSize = `${a1 + getnumber({ r_ext })}px`;
+    const { r_ele, r_ext, SB } = data;
+    if (SB) {
+
+    }
+    else {
+        const a1 = mainfont({ r_body }) + (mainfont({ r_body }) * 0.52)
+        r_ele.style.fontSize = `${a1 + getnumber({ r_ext })}px`;
+    }
 }
 function h2(data) {
-    const { r_ele, r_ext } = data;
-    const a1 = mainfont({ r_body }) + (mainfont({ r_body }) * 0.42)
-    r_ele.style.fontSize = `${a1 + getnumber({ r_ext })}px`;
+    const { r_ele, r_ext, SB } = data;
+    if (SB) {
+
+    }
+    else {
+        const a1 = mainfont({ r_body }) + (mainfont({ r_body }) * 0.42)
+        r_ele.style.fontSize = `${a1 + getnumber({ r_ext })}px`;
+    }
 }
 function h3(data) {
-    const { r_ele, r_ext } = data;
-    const a1 = mainfont({ r_body }) + (mainfont({ r_body }) * 0.32)
-    r_ele.style.fontSize = `${a1 + getnumber({ r_ext })}px`;
+    const { r_ele, r_ext, SB } = data;
+    if (SB) {
+
+    }
+    else {
+        const a1 = mainfont({ r_body }) + (mainfont({ r_body }) * 0.32)
+        r_ele.style.fontSize = `${a1 + getnumber({ r_ext })}px`;
+    }
 }
 function h4(data) {
-    const { r_ele, r_ext } = data;
-    const a1 = mainfont({ r_body }) + (mainfont({ r_body }) * 0.22)
-    r_ele.style.fontSize = `${a1 + getnumber({ r_ext })}px`;
+    const { r_ele, r_ext, SB } = data;
+    if (SB) {
+
+    }
+    else {
+        const a1 = mainfont({ r_body }) + (mainfont({ r_body }) * 0.22)
+        r_ele.style.fontSize = `${a1 + getnumber({ r_ext })}px`;
+    }
 }
 function h5(data) {
-    const { r_ele, r_ext } = data;
-    const a1 = mainfont({ r_body }) + (mainfont({ r_body }) * 0.12)
-    r_ele.style.fontSize = `${a1 + getnumber({ r_ext })}px`;
+    const { r_ele, r_ext, SB } = data;
+    if (SB) {
+
+    }
+    else {
+        const a1 = mainfont({ r_body }) + (mainfont({ r_body }) * 0.12)
+        r_ele.style.fontSize = `${a1 + getnumber({ r_ext })}px`;
+    }
 }
 
 
