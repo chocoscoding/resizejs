@@ -12,15 +12,15 @@ npm install resyze
 
 ## Usage Info
 
-```js
-/*
 r_ele === the element that will be resized
 r_type === type of text
 r_ext = this is the additional amount of font size you want to add (it measures finally in px)
-*r_ext must be a number*
- */
+_r_ext must be a number_
+TE (_Take Effect_) === Decide at ehat screen size rezyze starts taking effect
+SB (_Specific Box_) === For targeting a particular box or div
 
-//there are different types for different r_type's ;
+# For normal text
+
 "h1";
 "h2";
 "h3";
@@ -30,8 +30,13 @@ r_ext = this is the additional amount of font size you want to add (it measures 
 "normal";
 "tiny";
 "text";
+
+# For targeted divs
+
+"ignore";
+"normal";
+"tiny";
 "big"; (for only SB)
-```
 
 ## Usage
 
@@ -41,6 +46,7 @@ import resyze from "resyze";
 
 const appbody = useRef(0);
 const appbody2 = useRef(0);
+const button1 = useRef(0);
 
 useEffect(() => {
   function resyzef() {
@@ -48,7 +54,12 @@ useEffect(() => {
       {
         r_ele: appbody.current,
         r_type: "h1",
-        r_ext: 10,
+        r_ext: 4,
+      },
+      {
+        TE: 300,
+        SB: button1.current,
+        r_type: "normal",
       },
       {
         r_ele: appbody2.current,
@@ -68,6 +79,19 @@ return (
       <p ref={appbody}>
         Edit <code>src/App.js</code> and save to reload.
       </p>
+      <button
+        ref={button1}
+        style={{
+          backgroundColor: "blue",
+          borderRadius: "10px",
+          border: "none",
+          width: "90%",
+          height: "50px",
+          color: "white",
+        }}
+      >
+        Click ere for sometin
+      </button>
       <a
         className="App-link"
         href="https://reactjs.org"

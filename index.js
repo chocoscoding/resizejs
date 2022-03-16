@@ -1,8 +1,29 @@
 const main_s = 16,
+    text_s = 20,
     main_a = 240 * 320,
-    sbmax = 3300,
+    sbmax = 3800,
     r_body = document.body;
 
+function spe_w(width) {
+    if (width > 230) {
+        if (width > 630) {
+            if (width > 900) {
+                return 270
+
+            }
+            return 260
+
+        }
+        else {
+            return 230
+
+        }
+
+
+    }
+
+    return width
+}
 
 function getnumber(data) {
     const { r_ext } = data;
@@ -19,9 +40,8 @@ function getnumber(data) {
 
 }
 
-function take_E(data) {
-    const { TE } = data;
-    if (TE) {
+function take_E(TE) {
+    if (typeof TE === 'number') {
 
         if (r_body.clientWidth <= TE) {
             return true;
@@ -30,7 +50,7 @@ function take_E(data) {
 
     }
     else {
-        throw Error('TE(take effect) is undefined. Remove it or add a number value')
+        throw Error(`TE(take effect) isn't a number. Remove it or add a number value`)
     }
 }
 
@@ -57,7 +77,6 @@ function requirements(data) {
             throw Error('r_body or r_ele not found')
         }
         else if (SB) {
-            console.log('ok');
 
             switch (r_type) {
                 case 'ignore':
@@ -137,13 +156,15 @@ function mainfont(data) {
     return c12;
 
 }
+
+
 function sbfont(data) {
     const { SB } = data;
-    const cw = SB.clientWidth > 100 ? 100 : SB.clientWidth;
+    const cw = spe_w(SB.clientWidth)
     const ch = SB.clientHeight > 100 ? 100 : SB.clientHeight;
     const new_a = (ch * cw) * 0.33;
     const c1a = new_a / sbmax;
-    const c12 = c1a * main_s;
+    const c12 = c1a * 20;
     return c12;
 
 }
@@ -161,7 +182,6 @@ function normal(data) {
     const { r_ele, r_ext, SB } = data;
     if (SB) {
         const a1 = sbfont({ SB }) + (sbfont({ SB }) * 0.15)
-        SB.style.color = 'red';
         SB.style.fontSize = `${a1 + getnumber({ r_ext })}px`;
 
     }
