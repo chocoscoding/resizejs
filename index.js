@@ -1,6 +1,6 @@
 const main_s = 16,
     main_a = 240 * 320,
-    sb_min = 100,
+    sbmax = 3300,
     r_body = document.body;
 
 
@@ -19,16 +19,39 @@ function getnumber(data) {
 
 }
 
+function take_E(data) {
+    const { TE } = data;
+    if (TE) {
+
+        if (r_body.clientWidth <= TE) {
+            return true;
+        }
+        return false;
+
+    }
+    else {
+        throw Error('TE(take effect) is undefined. Remove it or add a number value')
+    }
+}
+
 function resyze(domarr) {
     domarr.forEach((ele) => {
         const { r_ele, r_type, r_ext, TE, SB } = ele;
-        requirements({ r_ele, r_type, r_ext, TE, SB })
+        if (TE) {
+            if (take_E(TE)) {
+                requirements({ r_ele, r_type, r_ext, TE, SB })
+            }
+        }
+        else {
+
+            requirements({ r_ele, r_type, r_ext, SB })
+        }
     });
 };
 
 
 function requirements(data) {
-    const { r_ele, r_type, r_ext, TE, SB } = data;
+    const { r_ele, r_type, r_ext, SB } = data;
     if (r_ele === undefined) {
         throw Error('r_body or r_ele not found')
 
@@ -128,11 +151,21 @@ function mainfont(data) {
     return c12;
 
 }
+function sbfont(data) {
+    const { SB } = data;
+    const cw = SB.clientWidth > 100 ? 100 : SB.clientWidth;
+    const ch = SB.clientHeight > 100 ? 100 : SB.clientHeight;
+    const new_a = (ch * cw) * 0.33;
+    const c1a = new_a / sbmax;
+    const c12 = c1a * main_s;
+    return c12;
+
+}
 
 function ignore(data) {
     const { r_ele, r_ext, SB } = data;
     if (SB) {
-
+        r_ele.style.fontSize = `${mainfont({ r_body }) + getnumber({ r_ext })}px`;
     }
     else {
         r_ele.style.fontSize = `${mainfont({ r_body }) + getnumber({ r_ext })}px`;

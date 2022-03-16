@@ -13,8 +13,8 @@ npm install resyze
 ## Usage Info
 
 ```js
-/* 
-r_ele === the element that will be resized 
+/*
+r_ele === the element that will be resized
 r_type === type of text
 r_ext = this is the additional amount of font size you want to add (it measures finally in px)
 *r_ext must be a number*
@@ -30,6 +30,7 @@ r_ext = this is the additional amount of font size you want to add (it measures 
 "normal";
 "tiny";
 "text";
+"big"; (for only SB)
 ```
 
 ## Usage
@@ -45,14 +46,14 @@ useEffect(() => {
   function resyzef() {
     resyze([
       {
-          r_ele: appbody.current,
-          r_type: 'h1',
-          r_ext: 10
-        },
-        {
-          r_ele: appbody2.current,
-          r_type: 'text'
-        }
+        r_ele: appbody.current,
+        r_type: "h1",
+        r_ext: 10,
+      },
+      {
+        r_ele: appbody2.current,
+        r_type: "text",
+      },
     ]);
   }
 
